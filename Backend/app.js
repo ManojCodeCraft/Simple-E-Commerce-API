@@ -4,7 +4,11 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const cors = require("cors");
 const api = process.env.API_URL;
+//cors
+app.use(cors());
+app.options("*", cors());
 //middleware
 app.use(bodyParser.json());
 app.use(morgan("tiny"));
