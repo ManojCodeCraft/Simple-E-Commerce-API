@@ -97,7 +97,7 @@ secret=your_jwt_secret_key
 | DELETE | /api/v1/orders/:id     | Cancel order               |
 | GET    | /api/v1/orders/get/count | Total orders              |
 
-###🧺 Cart
+🧺 **Cart**
 | Method | Endpoint          | Description                |
 | ------ | ----------------- | -------------------------- |
 | GET    | /api/v1/cart      | Get user's cart            |
