@@ -30,18 +30,30 @@ const storage = multer.diskStorage({
 
 const uploadOptions = multer({ storage: storage });
 
-router.get(`/`, async (req, res) => {
-  let filter = {};
-  if (req.query.categories) {
-    filter = { category: req.query.categories.split(",") };
-  }
+router.get("/", async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1; // default page = 1
+    const limit = parseInt(req.query.limit) || 10; // default limit = 10
+    const skip = (page - 1) * limit;
 
-  const productList = await Product.find(filter).populate("category");
+    const nameQuery = req.query.name;
+    let filter = {};
+    if (nameQuery) {
+      filter.name = { $regex: nameQuery, $options: "i" };
+    }
 
-  if (!productList) {
-    res.status(500).json({ success: false });
+    const total = await Product.countDocuments(filter);
+    const products = await Product.find(filter).skip(skip).limit(limit);
+
+    res.status(200).json({
+      totalItems: total,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      products,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
   }
-  res.send(productList);
 });
 
 router.get(`/:id`, async (req, res) => {
