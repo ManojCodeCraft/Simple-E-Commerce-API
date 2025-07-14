@@ -72,9 +72,11 @@ secret=your_jwt_secret_key
 | POST   | /api/v1/products                  | Add product (Admin only)  |
 | PUT    | /api/v1/products/:id              | Update product (Admin)    |
 | DELETE | /api/v1/products/:id              | Delete product (Admin)    |
-| PUT    | /api/v1/products/gallery-images/:id | Upload multiple images    |
-| GET    | /api/v1/products/get/featured/:count | Get featured products   |
+| PUT    | /api/v1/products/gallery-images/:id | Upload multiple images  |
+| GET    | /api/v1/products/get/featured/:count | Get featured products |
 | GET    | /api/v1/products/get/count        | Get total count           |
+| GET    | /api/v1/products?name=phone       | Search products by name   |
+| GET    | /api/v1/products?page=1&limit=10  | Paginated product list    |
 
 ### 📂 Categories
 
@@ -95,6 +97,15 @@ secret=your_jwt_secret_key
 | DELETE | /api/v1/orders/:id     | Cancel order               |
 | GET    | /api/v1/orders/get/count | Total orders              |
 
+###🧺 Cart
+| Method | Endpoint          | Description                |
+| ------ | ----------------- | -------------------------- |
+| GET    | /api/v1/cart      | Get user's cart            |
+| POST   | /api/v1/cart      | Add product to cart        |
+| PUT    | /api/v1/cart/\:id | Update quantity of product |
+| DELETE | /api/v1/cart/\:id | Remove product from cart   |
+
+
 ### 👤 Users
 
 | Method | Endpoint               | Description              |
@@ -107,6 +118,7 @@ secret=your_jwt_secret_key
 
 ---
 
+---
 ## 🔐 Security
 
 - All sensitive routes are protected with **JWT** using `express-jwt`
