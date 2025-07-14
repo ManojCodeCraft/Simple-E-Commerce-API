@@ -5,13 +5,19 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
+const authJwt = require("./helpers/jwt");
+const errorHandler = require("./helpers/error-handler");
 const api = process.env.API_URL;
 //cors
 app.use(cors());
-app.options("*", cors());
+//app.options("*", cors());
 //middleware
 app.use(bodyParser.json());
+app.use(express.json());
 app.use(morgan("tiny"));
+app.use(authJwt());
+app.use("/public/uploads", express.static(__dirname + "/public/uploads"));
+app.use(errorHandler);
 //Routes
 const categoriesRoutes = require("./routes/categories");
 const productsRoutes = require("./routes/products");
