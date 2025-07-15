@@ -60,88 +60,97 @@ secret=your_jwt_secret_key
 ```
 
 ---
-📊 Database Schema
-+-----------------------------+
-|         Products           |
-+-----------------------------+
-| id: string                 |
-| name: string               |
-| description: string        |
-| richDescription: string    |
-| image: string              |
-| images: string[]           |
-| brand: string              |
-| price: number              |
-| category: Category 🔗      |
-| countInStock: number       |
-| rating: number             |
-| isFeatured: boolean        |
-| dateCreated: Date          |
-+-----------------------------+
+## 📊 Database Schema
 
-+-----------------------------+
-|         Category           |
-+-----------------------------+
-| id: string                 |
-| name: string               |
-| color: string              |
-| icon: string               |
-| image: string              |
-+-----------------------------+
+### 🛍️ Products
 
-+-----------------------------+
-|          Users             |
-+-----------------------------+
-| id: string                 |
-| name: string               |
-| email: string              |
-| passwordHash: string       |
-| street: string             |
-| apartment: string          |
-| city: string               |
-| zip: string                |
-| country: string            |
-| phone: string              |
-| isAdmin: boolean           |
-+-----------------------------+
+| Field           | Type       | Description                     |
+|----------------|------------|---------------------------------|
+| id             | string     | Product ID                      |
+| name           | string     | Product name                    |
+| description    | string     | Short description               |
+| richDescription| string     | Full description                |
+| image          | string     | Main image URL                  |
+| images         | string[]   | Additional images               |
+| brand          | string     | Brand name                      |
+| price          | number     | Product price                   |
+| category       | Category 🔗 | Reference to Category model     |
+| countInStock   | number     | Inventory count                 |
+| rating         | number     | Product rating                  |
+| numReviews     | number     | Number of reviews               |
+| isFeatured     | boolean    | Featured flag                   |
+| dateCreated    | Date       | Creation timestamp              |
 
-+-----------------------------+
-|         Orders             |
-+-----------------------------+
-| id: string                 |
-| orderItems: OrderItem[] 🔗 |
-| shippingAddress1: string   |
-| shippingAddress2: string   |
-| city: string               |
-| zip: string                |
-| country: string            |
-| phone: string              |
-| status: string             |
-| totalPrice: number         |
-| user: User 🔗              |
-| dateOrdered: Date          |
-+-----------------------------+
+---
 
-+-----------------------------+
-|       OrderItems           |
-+-----------------------------+
-| id: string                 |
-| product: Product 🔗        |
-| quantity: number           |
-+-----------------------------+
+### 🗂️ Category
 
-+-----------------------------+
-|           Cart             |
-+-----------------------------+
-| id: string                 |
-| user: User 🔗              |
-| products: [
-|   {                       |
-|     product: Product 🔗,   |
-|     quantity: number      |
-|   }                       |
-| ]                         |
-+-----------------------------+
+| Field | Type   | Description      |
+|-------|--------|------------------|
+| id    | string | Category ID      |
+| name  | string | Category name    |
+| color | string | Display color    |
+| icon  | string | Icon URL         |
+| image | string | Banner image     |
+
+---
+
+### 👤 Users
+
+| Field         | Type    | Description          |
+|---------------|---------|----------------------|
+| id            | string  | User ID              |
+| name          | string  | Full name            |
+| email         | string  | Email address        |
+| passwordHash  | string  | Hashed password      |
+| street        | string  | Street address       |
+| apartment     | string  | Apartment number     |
+| city          | string  | City                 |
+| zip           | string  | ZIP code             |
+| country       | string  | Country              |
+| phone         | string  | Phone number         |
+| isAdmin       | boolean | Role identifier      |
+
+---
+
+### 📦 Orders
+
+| Field            | Type           | Description                  |
+|------------------|----------------|------------------------------|
+| id               | string         | Order ID                     |
+| orderItems       | OrderItem[] 🔗 | List of ordered items        |
+| shippingAddress1 | string         | Primary address              |
+| shippingAddress2 | string         | Secondary address (optional)|
+| city             | string         | City                         |
+| zip              | string         | ZIP code                     |
+| country          | string         | Country                      |
+| phone            | string         | Phone number                 |
+| status           | string         | Order status                 |
+| totalPrice       | number         | Total order price            |
+| user             | User 🔗        | User who placed the order    |
+| dateOrdered      | Date           | Order date                   |
+
+---
+
+### 📄 OrderItems
+
+| Field    | Type       | Description           |
+|----------|------------|-----------------------|
+| id       | string     | Order item ID         |
+| product  | Product 🔗 | Associated product     |
+| quantity | number     | Quantity ordered      |
+
+---
+
+### 🛒 Cart
+
+| Field    | Type       | Description                  |
+|----------|------------|------------------------------|
+| id       | string     | Cart ID                      |
+| user     | User 🔗    | Reference to the user        |
+| products | array      | List of items with quantity  |
+| └ product| Product 🔗 | Each product in the cart     |
+| └ quantity| number    | Quantity of that product     |
 
 ---
 ## 🔄 API Endpoints
