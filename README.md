@@ -153,6 +153,48 @@ secret=your_jwt_secret_key
 | └ quantity| number    | Quantity of that product     |
 
 ---
+## 🔗 Relationships
+
+Understanding how the models relate to each other:
+
+- **Product ↔ Category**
+  - Each product belongs to **one category**
+  - Reference: `Product.category ➝ Category._id`
+
+- **Product ↔ OrderItem**
+  - Each order item includes a **single product**
+  - Reference: `OrderItem.product ➝ Product._id`
+
+- **Order ↔ OrderItems**
+  - Each order has **multiple order items**
+  - Reference: `Order.orderItems ➝ [OrderItem._id]`
+
+- **Order ↔ User**
+  - Each order is placed by a **single user**
+  - Reference: `Order.user ➝ User._id`
+
+- **Cart ↔ User**
+  - Each user has a **single cart**
+  - Reference: `Cart.user ➝ User._id`
+
+- **Cart ↔ Products**
+  - Cart contains an array of products with quantities
+  - Reference: `Cart.products.product ➝ Product._id`
+
+---
+
+### 🔁 Summary Table
+
+| From      | To        | Relationship         |
+|-----------|-----------|----------------------|
+| Product   | Category  | Many-to-One          |
+| Order     | User      | Many-to-One          |
+| Order     | OrderItem | One-to-Many          |
+| OrderItem | Product   | Many-to-One          |
+| Cart      | User      | One-to-One           |
+| Cart      | Product   | Many-to-Many (via array) |
+
+---
 ## 🔄 API Endpoints
 
 ### 📘 Products
