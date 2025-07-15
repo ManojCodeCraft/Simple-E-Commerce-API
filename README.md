@@ -60,7 +60,90 @@ secret=your_jwt_secret_key
 ```
 
 ---
+📊 Database Schema
++-----------------------------+
+|         Products           |
++-----------------------------+
+| id: string                 |
+| name: string               |
+| description: string        |
+| richDescription: string    |
+| image: string              |
+| images: string[]           |
+| brand: string              |
+| price: number              |
+| category: Category 🔗      |
+| countInStock: number       |
+| rating: number             |
+| isFeatured: boolean        |
+| dateCreated: Date          |
++-----------------------------+
 
++-----------------------------+
+|         Category           |
++-----------------------------+
+| id: string                 |
+| name: string               |
+| color: string              |
+| icon: string               |
+| image: string              |
++-----------------------------+
+
++-----------------------------+
+|          Users             |
++-----------------------------+
+| id: string                 |
+| name: string               |
+| email: string              |
+| passwordHash: string       |
+| street: string             |
+| apartment: string          |
+| city: string               |
+| zip: string                |
+| country: string            |
+| phone: string              |
+| isAdmin: boolean           |
++-----------------------------+
+
++-----------------------------+
+|         Orders             |
++-----------------------------+
+| id: string                 |
+| orderItems: OrderItem[] 🔗 |
+| shippingAddress1: string   |
+| shippingAddress2: string   |
+| city: string               |
+| zip: string                |
+| country: string            |
+| phone: string              |
+| status: string             |
+| totalPrice: number         |
+| user: User 🔗              |
+| dateOrdered: Date          |
++-----------------------------+
+
++-----------------------------+
+|       OrderItems           |
++-----------------------------+
+| id: string                 |
+| product: Product 🔗        |
+| quantity: number           |
++-----------------------------+
+
++-----------------------------+
+|           Cart             |
++-----------------------------+
+| id: string                 |
+| user: User 🔗              |
+| products: [
+|   {                       |
+|     product: Product 🔗,   |
+|     quantity: number      |
+|   }                       |
+| ]                         |
++-----------------------------+
+
+---
 ## 🔄 API Endpoints
 
 ### 📘 Products
