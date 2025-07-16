@@ -298,6 +298,9 @@ This backend project meets the internship assignment objectives and provides a p
 
 ---
 
+## 📃 License
+
+This project is licensed under the [MIT License](LICENSE)
 ## 👨‍💻 Author
 
 **Manoj Kumar**  
