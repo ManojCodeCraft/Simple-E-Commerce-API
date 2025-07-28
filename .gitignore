@@ -1,0 +1,44 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build/coverage output
+dist/
+build/
+coverage/
+
+# IDE/Editor folders
+.vscode/
+.idea/
+*.sw?
+
+# Optional: If using uploads or temp files
+uploads/
+temp/
+
+# Optional: PM2 or other process manager logs
+pids/
+*.pid
+*.seed
+
+# Ignore test coverage reports
+coverage/
+
+# Ignore local database files
+*.sqlite
+*.db
+
+# Ignore lock files (if you prefer)
+# package-lock.json
+# yarn.lock

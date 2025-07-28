@@ -33,8 +33,8 @@ const orderSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    required: true,
     default: "Pending",
+    enum: ["Pending", "Processing", "Shipped", "Delivered", "Cancelled"],
   },
   totalPrice: {
     type: Number,
@@ -48,13 +48,5 @@ const orderSchema = mongoose.Schema({
     default: Date.now,
   },
 });
-
-orderSchema.virtual("id").get(function () {
-  return this._id.toHexString();
-});
-
-orderSchema.set("toJSON", {
-  virtuals: true,
-});
-
-exports.Order = mongoose.model("Order", orderSchema);
+const Order = mongoose.model("Order", orderSchema);
+module.exports = Order;
