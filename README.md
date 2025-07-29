@@ -127,7 +127,7 @@ The API is deployed on **Render**:
 
 ---
 
-## 📄 License
+## 📄 License.
 
 This project is licensed under the [MIT License](LICENSE).
 
