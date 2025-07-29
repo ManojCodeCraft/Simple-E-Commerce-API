@@ -123,11 +123,20 @@ npm run dev
 ## 🌍 Deployment
 
 The API is deployed on **Render**:  
-🔗 [[https://simple-e-commerce-api.onrender.com](https://simple-e-commerce-api.onrender.com)](https://simple-e-commerce-api-bcpd.onrender.com)
+🔗 [https://simple-e-commerce-api-bcpd.onrender.com](https://simple-e-commerce-api-bcpd.onrender.com)
 
 ---
+
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
+
+
+---
+
+## 🤝 Credits
+
+Built with 💻 by [ManojCodeCraft](https://github.com/ManojCodeCraft)
+
 
 
