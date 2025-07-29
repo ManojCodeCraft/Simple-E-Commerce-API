@@ -68,11 +68,26 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    const productList = await Product.find().populate("category", "name");
-    res.status(200).json(productList);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    const products = await Product.find()
+      .populate("category", "name")
+      .skip(skip)
+      .limit(limit);
+
+    const total = await Product.countDocuments();
+
+    res.status(200).json({
+      total,
+      page,
+      totalPages: Math.ceil(total / limit),
+      products,
+    });
   } catch (error) {
-    console.error("Get Products Error:", error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Get All Products Error:", error.message);
+    res.status(500).json({ message: "Server Error", error: error.message });
   }
 };
 
@@ -139,11 +154,28 @@ const deleteProduct = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+const searchProducts = async (req, res) => {
+  try {
+    const query = req.query.query || "";
 
+    const products = await Product.find({
+      name: { $regex: query, $options: "i" },
+    }).populate("category", "name");
+
+    res.status(200).json({
+      total: products.length,
+      products,
+    });
+  } catch (error) {
+    console.error("Search Products Error:", error.message);
+    res.status(500).json({ message: "Server Error", error: error.message });
+  }
+};
 module.exports = {
   createProduct,
   getAllProducts,
   getProductById,
   updateProduct,
   deleteProduct,
+  searchProducts,
 };
