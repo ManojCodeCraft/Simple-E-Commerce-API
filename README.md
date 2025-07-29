@@ -113,46 +113,21 @@ git clone https://github.com/ManojCodeCraft/Simple-E-Commerce-API.git
 cd Simple-E-Commerce-API
 npm install
 Create a .env file:
-
-ini
-Copy
-Edit
 PORT=5000
 API_URL=/api
 JWT_SECRET=your_jwt_secret
 DB_URI=mongodb://localhost:27017/ecommerce
 Start the server:
-
-bash
-Copy
-Edit
 npm run dev
-🌍 Deployment
-The API is deployed on Render:
-🔗 https://simple-e-commerce-api.onrender.com
-(Replace with actual Render URL if different)
+```
+## 🌍 Deployment
 
-✅ Todos / Roadmap
- User auth and roles
+The API is deployed on **Render**:  
+🔗 [[https://simple-e-commerce-api.onrender.com](https://simple-e-commerce-api.onrender.com)](https://simple-e-commerce-api-bcpd.onrender.com)
 
- Product listing
+---
+## 📄 License
 
- Cart & Orders
+This project is licensed under the [MIT License](LICENSE).
 
- Admin-only access
 
- Pagination
-
- Product search
-
- Basic frontend (optional)
-
- Unit testing with Jest (optional)
-
- API documentation with Swagger/Postman (optional)
-
-📄 License
-This project is licensed under the MIT License.
-
-🤝 Credits
-Built with 💻 by ManojCodeCraft
