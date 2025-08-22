@@ -31,6 +31,7 @@ A RESTful API for a basic e-commerce application built with **Node.js**, **Expre
 
 ### 🔐 Auth (`/api/users`)
 
+
 | Method | Endpoint                    | Access        | Description               |
 |--------|-----------------------------|---------------|---------------------------|
 | POST   | `/register`                 | Public        | Register a new user       |
